@@ -66,6 +66,8 @@ enum Identifier: String {
     case ForgotPinDialog = "ForgotPinDialog"
     case forgotPin = "ForgotPinVC"
     case child = "ChildVC"
+    case AddChild = "AddChildVC"
+    
     
     
     //Tableview cell

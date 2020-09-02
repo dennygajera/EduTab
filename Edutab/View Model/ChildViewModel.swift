@@ -36,4 +36,20 @@ struct ChildViewModel {
             }
         }
     }
+    
+    func apiAddChildData(dicParam: [String: Any], completion :@escaping (_ isSucess : Bool?,_ receivedData: [childResponse]?) -> Void) {
+        ServiceManager.sharedInstance.getRequest(parameterDict: dicParam, URL: API.child.URL) { (response, error) in
+            do {
+                if response != nil {
+                    completion(true,try JSONDecoder().decode([childResponse].self, from: (response!.dataReturn(isParseDirect: false))!))
+                    
+                } else {
+                    completion(false, nil)
+                }
+            } catch let err {
+                print(err)
+                completion(false, nil)
+            }
+        }
+    }
 }

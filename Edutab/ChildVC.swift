@@ -21,9 +21,11 @@ class ChildCell: UITableViewCell {
 
 class ChildVC: BaseVC {
     
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tblView: UITableView!
     var viewModel: ChildViewModel = ChildViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let leftImg = UIImage(named: "icoBack")
@@ -32,7 +34,9 @@ class ChildVC: BaseVC {
         }) { (sender) in
             
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.viewModel.apiGetChildData(dicParam: [:]) { (isSuccess, response) in
             if isSuccess! {
                 self.viewModel.childData = response
@@ -41,6 +45,16 @@ class ChildVC: BaseVC {
                 self.tblView.reloadData()
             }
         }
+    }
+    
+    
+    @IBAction func btnBackClick(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnAddClick(_ sender: AnyObject) {
+        let add = Storyboard.main.storyboard().instantiateViewController(withIdentifier: Identifier.AddChild.rawValue) as! AddChildVC
+        self.navigationController?.pushViewController(add, animated: true)
     }
 }
 
@@ -60,7 +74,19 @@ extension ChildVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblName.text = singleChildData.name
         cell.lblStandard.text = singleChildData.std
         cell.lblSchool.text = singleChildData.school_name
+        cell.btnEdit.tag = indexPath.row
+        cell.btnEdit.addTarget(self, action: #selector(btnEditClick(btn:)), for: .touchUpInside)
         self.setShadow(view: cell.viewBackground)
         return cell
     }
+    
+    @objc func btnEditClick(btn: UIButton) {
+        let singleChild = self.viewModel.childData[btn.tag]
+        let add = Storyboard.main.storyboard().instantiateViewController(withIdentifier: Identifier.AddChild.rawValue) as! AddChildVC
+        add.selectedChild = singleChild
+        self.navigationController?.pushViewController(add, animated: true)
+        
+        
+    }
+    
 }

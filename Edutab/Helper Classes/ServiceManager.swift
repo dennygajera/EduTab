@@ -24,6 +24,7 @@ enum API : String {
     case changePassword = "profile/changepassword"
     case dashboard = "app/dashboard"
     case child = "childs"
+    case addChild = "child/create"
     
     var URL : String {
         get{
