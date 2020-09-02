@@ -38,6 +38,7 @@ class ChildVC: BaseVC {
                 self.viewModel.childData = response
                 self.tblView.delegate = self
                 self.tblView.dataSource = self
+                self.tblView.reloadData()
             }
         }
     }
@@ -54,8 +55,12 @@ extension ChildVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ChildCell.rawValue, for: indexPath) as! ChildCell
-        
-        
+        let singleChildData = self.viewModel.childData[indexPath.row]
+        cell.lblChild.text = String(singleChildData.name!.prefix(1))
+        cell.lblName.text = singleChildData.name
+        cell.lblStandard.text = singleChildData.std
+        cell.lblSchool.text = singleChildData.school_name
+        self.setShadow(view: cell.viewBackground)
         return cell
     }
 }

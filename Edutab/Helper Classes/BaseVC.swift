@@ -283,6 +283,19 @@ class BaseVC: UIViewController,MFMailComposeViewControllerDelegate {
             completion()
         }
     }
+    func setShadow(view: UIView) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            let shadowPath0 = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10)
+            view.layer.masksToBounds = false
+            view.layer.bounds = view.bounds
+            view.layer.position = view.center
+            view.layer.shadowPath = shadowPath0.cgPath
+            view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
+            view.layer.shadowOpacity = 2
+            view.layer.shadowRadius = 2
+            view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        }
+    }
 }
 
 extension UIControl {
