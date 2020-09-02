@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (4.9.1)
+  - IQKeyboardManagerSwift (6.5.5)
+  - JVFloatLabeledTextField (1.2.2)
+  - MBProgressHUD (1.1.0)
+  - ReachabilitySwift (5.0.0)
+  - RxAlamofire (4.4.1):
+    - RxAlamofire/Core (= 4.4.1)
+  - RxAlamofire/Core (4.4.1):
+    - Alamofire (~> 4.8)
+    - RxSwift (~> 4.5)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SDWebImage (5.8.4):
+    - SDWebImage/Core (= 5.8.4)
+  - SDWebImage/Core (5.8.4)
+  - SVPinView (1.0.9)
+  - TextFieldEffects (1.6.0)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - JVFloatLabeledTextField
+  - MBProgressHUD (~> 1.1.0)
+  - ReachabilitySwift
+  - RxAlamofire
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SDWebImage
+  - SVPinView
+  - TextFieldEffects
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - JVFloatLabeledTextField
+    - MBProgressHUD
+    - ReachabilitySwift
+    - RxAlamofire
+    - RxCocoa
+    - RxSwift
+    - SDWebImage
+    - SVPinView
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
+  SVPinView: 3dd47f5cd5ee67520ab1319a780cc0664735fafe
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+
+PODFILE CHECKSUM: 3aa0d181508694b6f1d2f13413b17739c7611333
+
+COCOAPODS: 1.9.3

@@ -1,0 +1,6 @@
+framework module Pods_EdutabTests {
+  umbrella header "Pods-EdutabTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

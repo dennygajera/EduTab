@@ -1,0 +1,6 @@
+framework module Pods_Edutab {
+  umbrella header "Pods-Edutab-umbrella.h"
+
+  export *
+  module * { export * }
+}
