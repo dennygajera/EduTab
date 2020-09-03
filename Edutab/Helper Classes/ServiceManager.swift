@@ -25,6 +25,8 @@ enum API : String {
     case dashboard = "app/dashboard"
     case child = "childs"
     case addChild = "child/create"
+    case editChild = "child/edit/"
+    case deleteChild = "child/delete/"
     
     var URL : String {
         get{
@@ -51,10 +53,12 @@ class ServiceManager: NSObject {
                 
                 var header: [String: String]?
                 if AppPrefsManager.sharedInstance.isKeyExistInPreference(key: AppPrefsManager.sharedInstance.USER) {
-                    header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi","User-ID": "6", "Authorization": "dq8UZsPdjlgAgQ"]
+                    header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi","User-ID": (AppPrefsManager.sharedInstance.getUserObj()?.id)!, "Authorization":  (AppPrefsManager.sharedInstance.getUserObj()?.token)!]
                 } else {
                     header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi"]
                 }
+                
+                print("Header: ",header as Any)
                 
                 RxAlamofire.requestJSON(.post,aUrl, parameters: parameterDict, headers:header)
                     .debug()
@@ -86,9 +90,7 @@ class ServiceManager: NSObject {
                                         } else {
 //                                            block(nil, nil)
                                         }
-                                        
-                                        block(dicData, nil)
-                                        
+                                        block(nil, nil)
                                     }
                                 }
                             } else if r.statusCode == 404 {
@@ -118,7 +120,7 @@ class ServiceManager: NSObject {
             
             var header: [String: String]?
             if AppPrefsManager.sharedInstance.isKeyExistInPreference(key: AppPrefsManager.sharedInstance.USER) {
-                header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi","User-ID": "6", "Authorization": "dq8UZsPdjlgAgQ"]
+                header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi","User-ID": (AppPrefsManager.sharedInstance.getUserObj()?.id)!, "Authorization":  (AppPrefsManager.sharedInstance.getUserObj()?.token)!]
             } else {
                 header = ["Client-Service": "edutab-client","Auth-Key": "edutabrestapi"]
             }
@@ -176,14 +178,14 @@ class ServiceManager: NSObject {
                           }
                         } else if response.response?.statusCode == 403 || response.response?.statusCode == 401 {
 
-                            
+
                         }
                     }
                     break
                 case .failure(let error):
                     print("Error : ",error)
                     if isLoader {
-                     LoadingView.stopLoading()
+                        LoadingView.stopLoading()
                     }
                 }
             }

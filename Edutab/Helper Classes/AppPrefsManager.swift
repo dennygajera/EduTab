@@ -20,10 +20,8 @@ class AppPrefsManager: NSObject {
     let USER = "USER"
     let DEVICEID = "DEVICEID"
     let ISINTROFINISH = "ISINTROFINISH"
-    
-    
-    
-    
+    let PRODUCTYOUTUBELINK = "PRODUCTYOUTUBELINK"
+    let HOWTOGETVIDEOURL = "HOWTOGETVIDEOURL"
     
     
     func setDataToPreference(data: AnyObject, forKey key: String) {
@@ -151,5 +149,24 @@ class AppPrefsManager: NSObject {
             return nil
         }
     }
+    
+    
+       func getProductURL() -> String? {
+           let url = getDataFromPreference(key: PRODUCTYOUTUBELINK)
+           return url as? String
+       }
+       
+       func setProductURL(obj: AnyObject) {
+           setDataToPreference(data: obj as AnyObject, forKey: PRODUCTYOUTUBELINK)
+       }
+    
+    func getHowToURL() -> String? {
+              let url = getDataFromPreference(key: HOWTOGETVIDEOURL)
+              return url as? String
+          }
+          
+          func setHowToURL(obj: AnyObject) {
+              setDataToPreference(data: obj as AnyObject, forKey: HOWTOGETVIDEOURL)
+          }
 }
 

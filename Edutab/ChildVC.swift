@@ -28,25 +28,28 @@ class ChildVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftImg = UIImage(named: "icoBack")
-        self.setNavigationBar(title: "Child's Information", titleImage: nil, leftImage: leftImg, rightImage: nil, leftTitle: nil, rightTitle: "Add", isLeft: true, isRight: true, isLeftMenu: false, isRightMenu: false, bgColor: .white, textColor: Color.AppColorCode.color(), isStatusBarSame: true, leftClick: { (sender) in
-            self.navigationController?.popViewController(animated: true)
-        }) { (sender) in
-            
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.getChildData()
+    }
+    
+    func getChildData() {
         self.viewModel.apiGetChildData(dicParam: [:]) { (isSuccess, response) in
             if isSuccess! {
                 self.viewModel.childData = response
+                if self.viewModel.childData.count <= 2{
+                    self.btnAdd.isHidden = false
+                } else {
+                    self.btnAdd.isHidden = true
+                }
                 self.tblView.delegate = self
                 self.tblView.dataSource = self
                 self.tblView.reloadData()
             }
         }
     }
-    
     
     @IBAction func btnBackClick(_ sender: AnyObject) {
         self.navigationController?.popViewController(animated: true)
@@ -75,9 +78,25 @@ extension ChildVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblStandard.text = singleChildData.std
         cell.lblSchool.text = singleChildData.school_name
         cell.btnEdit.tag = indexPath.row
+        cell.btnRemove.tag = indexPath.row
         cell.btnEdit.addTarget(self, action: #selector(btnEditClick(btn:)), for: .touchUpInside)
+        cell.btnRemove.addTarget(self, action: #selector(btnDeleteClick(btn:)), for: .touchUpInside)
         self.setShadow(view: cell.viewBackground)
         return cell
+    }
+    
+    @objc func btnDeleteClick(btn: UIButton) {
+
+        
+        let selectedChildData = self.viewModel.childData[btn.tag]
+        
+        var deleteChildRequest: DeleteChildRequest = DeleteChildRequest()
+        deleteChildRequest.id = selectedChildData.id
+        self.viewModel.apiDeleteChildData(dicParam: deleteChildRequest.dictionary, id: selectedChildData.id!) { (isSuccess, response) in
+            if isSuccess! {
+                self.getChildData()
+            }
+        }
     }
     
     @objc func btnEditClick(btn: UIButton) {
@@ -85,8 +104,5 @@ extension ChildVC: UITableViewDelegate, UITableViewDataSource {
         let add = Storyboard.main.storyboard().instantiateViewController(withIdentifier: Identifier.AddChild.rawValue) as! AddChildVC
         add.selectedChild = singleChild
         self.navigationController?.pushViewController(add, animated: true)
-        
-        
     }
-    
 }

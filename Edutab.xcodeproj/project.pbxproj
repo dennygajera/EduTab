@@ -64,6 +64,7 @@
 		653913252BC639DA823F9521 /* Pods_EdutabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F46C80D949974F418D9797C /* Pods_EdutabTests.framework */; };
 		7D43910224FFFA0700E01EAA /* AddChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43910124FFFA0700E01EAA /* AddChildVC.swift */; };
 		7D4391042500048F00E01EAA /* AddChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4391032500048F00E01EAA /* AddChildViewModel.swift */; };
+		7DBDC5E8250114BE002D2EEE /* ProductInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBDC5E7250114BE002D2EEE /* ProductInfoVC.swift */; };
 		88E7E26524F776E1009D0638 /* MobileVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7E26424F776E1009D0638 /* MobileVerificationVC.swift */; };
 		CB970B3A839690F41FD854FF /* Pods_Edutab_EdutabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9DABE7A33BF205F6EAA4B2 /* Pods_Edutab_EdutabUITests.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +158,7 @@
 		7CF3C9A820452BF630CBA45D /* Pods-Edutab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edutab.release.xcconfig"; path = "Target Support Files/Pods-Edutab/Pods-Edutab.release.xcconfig"; sourceTree = "<group>"; };
 		7D43910124FFFA0700E01EAA /* AddChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildVC.swift; sourceTree = "<group>"; };
 		7D4391032500048F00E01EAA /* AddChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewModel.swift; sourceTree = "<group>"; };
+		7DBDC5E7250114BE002D2EEE /* ProductInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoVC.swift; sourceTree = "<group>"; };
 		88E7E26424F776E1009D0638 /* MobileVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationVC.swift; sourceTree = "<group>"; };
 		B660F1BD44F9DB58EA040F18 /* Pods-Edutab-EdutabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edutab-EdutabUITests.release.xcconfig"; path = "Target Support Files/Pods-Edutab-EdutabUITests/Pods-Edutab-EdutabUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E2E28148D35BD93FF93E9A8D /* Pods-Edutab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edutab.debug.xcconfig"; path = "Target Support Files/Pods-Edutab/Pods-Edutab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				172F5C3324F660D1005B9FC8 /* LaunchScreen.storyboard */,
 				172F5C3624F660D1005B9FC8 /* Info.plist */,
 				7D43910124FFFA0700E01EAA /* AddChildVC.swift */,
+				7DBDC5E7250114BE002D2EEE /* ProductInfoVC.swift */,
 			);
 			path = Edutab;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				172F5C8B24F66154005B9FC8 /* Appdelegate+.swift in Sources */,
 				172F5C9324F66154005B9FC8 /* Font+.swift in Sources */,
 				172F5C8C24F66154005B9FC8 /* UINavigationController+root.swift in Sources */,
+				7DBDC5E8250114BE002D2EEE /* ProductInfoVC.swift in Sources */,
 				172F5C8324F66154005B9FC8 /* JsonSerializer.swift in Sources */,
 				172F5C9824F66154005B9FC8 /* ProgressCircularView.swift in Sources */,
 				17C950A624F78A3300397639 /* IntroductionVC.swift in Sources */,

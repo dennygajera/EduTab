@@ -14,7 +14,10 @@ class HomeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel.apiDashBoard(dicParam: [:]) { (isSuccess, response) in
-            
+            let productURL = response?.value(forKey: "intro_video_url") as! String
+            let howToGetURL = response?.value(forKey: "how_to_get_video_url") as! String
+            AppPrefsManager.sharedInstance.setProductURL(obj: productURL as  AnyObject)
+            AppPrefsManager.sharedInstance.setHowToURL(obj: howToGetURL as  AnyObject)
         }
     }
     
@@ -58,6 +61,11 @@ class HomeVC: BaseVC {
     @IBAction func btnShareWAClick (_ sender: UIButton) {
         
     }
+    
+    @IBAction func btnIntroProductClick (_ sender: UIButton) {
+        let productInfo = Storyboard.main.storyboard().instantiateViewController(withIdentifier: Identifier.ProductInfo.rawValue) as! ProductInfoVC
+        self.navigationController?.pushViewController(productInfo, animated: true)
+     }
 
 
     

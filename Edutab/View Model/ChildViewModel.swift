@@ -17,6 +17,10 @@ struct childResponse: Codable {
     var std: String?
 }
 
+struct DeleteChildRequest: Encodable {
+    var id: String?
+}
+
 struct ChildViewModel {
     
     var childData: [childResponse]!
@@ -27,6 +31,22 @@ struct ChildViewModel {
                 if response != nil {
                     completion(true,try JSONDecoder().decode([childResponse].self, from: (response!.dataReturn(isParseDirect: false))!))
                     
+                } else {
+                    completion(false, nil)
+                }
+            } catch let err {
+                print(err)
+                completion(false, nil)
+            }
+        }
+    }
+    
+    func apiDeleteChildData(dicParam: [String: Any], id: String, completion :@escaping (_ isSucess : Bool?,_ receivedData: [childResponse]?) -> Void) {
+        let url = "\(API.deleteChild.URL)/\(id)"
+        ServiceManager.sharedInstance.postRequest(parameterDict: dicParam, URL: url) { (response, error) in
+            do {
+                if response != nil {
+                    completion(true,try JSONDecoder().decode([childResponse].self, from: (response!.dataReturn(isParseDirect: false))!))
                 } else {
                     completion(false, nil)
                 }

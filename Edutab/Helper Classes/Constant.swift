@@ -67,6 +67,7 @@ enum Identifier: String {
     case forgotPin = "ForgotPinVC"
     case child = "ChildVC"
     case AddChild = "AddChildVC"
+    case ProductInfo = "ProductInfoVC"
     
     
     

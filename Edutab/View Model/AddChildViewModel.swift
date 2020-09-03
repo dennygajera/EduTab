@@ -57,12 +57,13 @@ extension AddChildViewModel {
         }
     }
 
-    func apiUpdateChildData(dicParam: [String: Any], completion :@escaping (_ isSucess : Bool?,_ receivedData: [childResponse]?) -> Void) {
-        ServiceManager.sharedInstance.postRequest(parameterDict: dicParam, URL: API.addChild.URL) { (response, error) in
+    func apiUpdateChildData(dicParam: [String: Any], id: String, completion :@escaping (_ isSucess : Bool?,_ receivedData: [childResponse]?) -> Void) {
+        let url = "\(API.editChild.URL)\(id)"
+        
+        ServiceManager.sharedInstance.postRequest(parameterDict: dicParam, URL: url) { (response, error) in
             do {
                 if response != nil {
                     completion(true,nil)
-                    
                 } else {
                     completion(false, nil)
                 }

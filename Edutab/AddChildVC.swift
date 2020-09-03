@@ -54,23 +54,20 @@ class AddChildVC: UIViewController {
             .orEmpty
             .bind(to: viewModel.schoolname)
             .disposed(by: disposeBag)
-        
-        
-        
     }
     
     @IBAction func btnSubmitClick(_ sender: AnyObject) {
         if self.viewModel.fieldValidation() {
             var objAddChildRequest = AddChildRequest()
-            if selectedChild != nil {
-                objAddChildRequest.id = "" //denny
-            }
+//            if selectedChild != nil {
+//                objAddChildRequest.id = selectedChild?.id //denny
+//            }
             objAddChildRequest.name = "\(txtFname.text ?? "") \(txtLName.text ?? "")"
             objAddChildRequest.std = txtStandard.text
             objAddChildRequest.school_name = txtSchoolName.text
             
             if selectedChild != nil { // Update
-                self.viewModel.apiUpdateChildData(dicParam: objAddChildRequest.dictionary) { (isSuccess, response) in
+                self.viewModel.apiUpdateChildData(dicParam: objAddChildRequest.dictionary, id: (selectedChild?.id)!) { (isSuccess, response) in
                     if isSuccess! {
                         self.navigationController?.popViewController(animated: true)
                     }
